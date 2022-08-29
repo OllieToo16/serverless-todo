@@ -11,6 +11,7 @@ const logger = createLogger('TodosAccess')
 
 // TODO: Implement the dataLayer logic
 const s3_bucket = process.env.ATTACHMENT_S3_BUCKET
+const docClient = new XAWS.DynamoDB.DocumentClient()
 
 export class ToDoAccess {
     constructor(
