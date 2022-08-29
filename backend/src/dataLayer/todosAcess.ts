@@ -1,14 +1,16 @@
 import * as AWS from 'aws-sdk'
+import * as AWSXRay from 'aws-xray-sdk'
 import { DocumentClient } from 'aws-sdk/clients/dynamodb'
 import { Types } from 'aws-sdk/clients/s3';
 import { TodoItem } from '../models/TodoItem'
 import { TodoUpdate } from '../models/TodoUpdate';
 
-// const XAWS = AWSXRay.captureAWS(AWS)
 
-// const logger = createLogger('TodosAccess')
+const XAWS = AWSXRay.captureAWS(AWS)
+const logger = createLogger('TodosAccess')
 
 // TODO: Implement the dataLayer logic
+const s3_bucket = process.env.ATTACHMENT_S3_BUCKET
 
 export class ToDoAccess {
     constructor(
